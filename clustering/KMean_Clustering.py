@@ -25,3 +25,7 @@ class KMean():
             # If the centroids have not changed, then we have converged.
 			if np.allclose(new_centroid, self.centroids):
 				break
+
+	def predict(self, data):
+		distances = np.linalg.norm(data - self.centroids[:, np.newaxis], axis=2)
+		return np.argmin(distances, axis=0)
